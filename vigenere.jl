@@ -16,19 +16,10 @@ function vigenere_encode(text::String, key::String, decode::Bool=false)
     if key != ""
         text_array = [character - 'a' for character in text]
         key_array = vcat([[character - 'a' for character in key] for arr in 1:ceil(length(text_array)/length(key))]...)
-        return (decode ? (-) ? (+))(join([char(character % 26 + 'a') for character in text_array, key_array[1:length(text_array) ]], ""))
+        return join([char(character % 26 + 'a') for character in (decode ? (-) : (+))(text_array, key_array[1:length(text_array) ])], "")
     end
     return text
 end
-
-## function vigenere_decode(text::String, key::String)
-##     if key != ""
-##         text_array = [int(character) - 97 for character in text]
-##         key_array = vcat([[int(character) - 97 for character in key] for arr in 1:ceil(length(text_array)/length(key))]...)
-##         return join([char((character + 26) % 26 + 97) for character in text_array - key_array[1:length(text_array) ]], "")
-##     end
-##     return text
-## end
 
 function average_variance(text::String, key::String, assumed_length=0)
     key_length = assumed_length == 0 ? length(key) : assumed_length
