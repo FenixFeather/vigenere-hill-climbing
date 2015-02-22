@@ -16,7 +16,7 @@ Usage
 
 ### To crack text
 - ```ciphertext = """ciphertext_here"""``` The encoding preferably should have skipped over punctuation.
-- ```cracked_keys = crack_key(cipher, 30, 0.15, 5, 50, 0.1)```
+- ```cracked_keys = crack_key(ciphertext, 30, 0.15, 5, 50, 0.1)```
     - Parameters, from left to right, are:
         - Max key length: The upper bound on the key length.
         - Epsilon: The chance that the algorithm explores nonoptimal choices. Increase this to encourage exploration.
