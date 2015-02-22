@@ -5,13 +5,16 @@ Usage
 -----
 - cd to the directory with the script
 - Run ```julia```. All the following commands should be used in the REPL.
-## To encode text
+
+### To encode text
 - ```plaintext = preprocess_text("""text_here""")```
 - ```vigenere_encode(plaintext, "key_here")```
-## To decode text
+
+### To decode text
 - ```ciphertext = """ciphertext_here"""``` The encoding preferably should have skipped over punctuation.
 - ```vigenere_encode(plaintext, "key_here", true)```
-## To crack text
+
+### To crack text
 - ```ciphertext = """ciphertext_here"""``` The encoding preferably should have skipped over punctuation.
 - ```cracked_keys = crack_key(cipher, 30, 0.15, 5, 50, 0.1)```
     - Parameters, from left to right, are:
