@@ -40,10 +40,6 @@ function guess_key(text::String, key_length::Int64, places=Int64[])
         slice = text[key_index:key_length:end]
         frequencies = frequency_dict(slice)
         rankings = sort(collect(keys(frequencies)), rev=true, by=key->frequencies[key])
-        ## println(length(places))
-        ## println(key_index)
-        ## println(rankings)
-        ## println(places[key_index])
         most_popular = rankings[min(length(rankings), places[key_index])]
         push!(result, (most_popular - 'e' + 52) % 26 + 'a')
     end
@@ -107,7 +103,7 @@ function learn_key(ciphertext::String, key_length::Int64, epsilon::Float64, epoc
 end
 
 function preprocess_text(text::String)
-    return lowercase(replace(text, " ", ""))
+    return lowercase(join([isalpha(c) ? c : "" for c in text],""))
 end
                         
 function frequency_difference(text_dict::Dict{Char, Int64})
